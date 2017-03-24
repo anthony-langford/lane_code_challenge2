@@ -1,29 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import ContactForm from './ContactForm';
-
-// class App extends Component {
-
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       uploadedFile: null,
-//       uploadedFileCloudinaryUrl: ''
-//     };
-//   }
-//   render() {
-//     return (
-//       <div className="App">
-//         <ContactForm className="form" />
-//         <img src={this.state.uploadedFileCloudinaryUrl} />
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
-
 
 class App extends Component {
 
@@ -62,7 +38,9 @@ class App extends Component {
     let $imagePreview = null;
     if (imagePreviewUrl) {
       $imagePreview = (<img className="imageDisplay" src={imagePreviewUrl} />);
-    }
+    } else {
+      $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+    };
 
     return (
       <div className="previewComponent">
@@ -75,8 +53,13 @@ class App extends Component {
             onChange={(e)=>this._handleImageChange(e)} />
           <button className="submitButton"
             type="submit"
-            onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
+            onClick={(e)=>this._handleSubmit(e)}>Upload Image
+          </button>
         </form>
+        <button className="rotateButton"
+          type="submit"
+          onClick={(e)=>this._handleSubmit(e)}>Rotate Image
+        </button>
       </div>
     )
   }
