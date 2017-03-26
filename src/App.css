@@ -25,7 +25,7 @@ body {
   width: 100%;
 }
 
-.rotateButton, .translateButton, .scaleButton, .opacityButton {
+.rotateButton, .translateButton, .scaleButton, .opacityButton, .resetButton {
   position: relative;
   padding: 12px;
   background: white;
@@ -158,7 +158,7 @@ footer {
   border: solid 1px #ccc;
 }
 
-.rotateButton, .translateButton, .scaleButton, .opacityButton {
+.rotateButton, .translateButton, .scaleButton, .opacityButton, .resetButton {
   display: block;
   clear: both;
 }
