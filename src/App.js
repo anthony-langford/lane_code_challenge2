@@ -8,13 +8,14 @@ class App extends Component {
     this.state = {
       file: '',
       imagePreviewUrl: '',
-      actions: {
-        rotated: false,
-        translated: false,
-        opacified: false
-      }
+      rotated: false,
+      translated: false,
+      scaled: false,
+      opacified: false
     };
   };
+
+  // handler functions
 
   _handleSubmit(e) {
     e.preventDefault();
@@ -40,48 +41,69 @@ class App extends Component {
   _handleRotate(e) {
     e.preventDefault();
     console.log('handle rotate');
-    if (this.state.actions.rotated) {
-      this.state.actions.rotated = false;
-      this.setState({ actions: this.state.actions });
+    if (this.state.rotated) {
+      this.setState({ rotated: false });
     } else {
-      this.state.actions.rotated = true;
-      this.setState({ actions: this.state.actions });
+      this.setState({ rotated: true });
     }
   };
 
   _handleTranslate(e) {
     e.preventDefault();
     console.log('handle translate');
-    if (this.state.actions.translated) {
-      this.state.actions.translated = false;
-      this.setState({ actions: this.state.actions });
+    if (this.state.translated) {
+      this.setState({ translated: false });
     } else {
-      this.state.actions.translated = true;
-      this.setState({ actions: this.state.actions });
+      this.setState({ translated: true });
+    }
+  };
+
+  _handleScale(e) {
+    e.preventDefault();
+    console.log('handle scale');
+    if (this.state.scaled) {
+      this.setState({ scaled: false });
+    } else {
+      this.setState({ scaled: true });
     }
   };
 
   _handleOpacity(e) {
     e.preventDefault();
     console.log('handle opacity');
-    if (this.state.actions.opacified) {
-      this.state.actions.opacified = false;
-      this.setState({ actions: this.state.actions });
+    if (this.state.opacified) {
+      this.setState({ opacified: false });
     } else {
-      this.state.actions.opacified = true;
-      this.setState({ actions: this.state.actions });
+      this.setState({ opacified: true });
     }
   };
 
   render() {
     let { imagePreviewUrl } = this.state;
     let $imagePreview = null;
-    let divStyle = null;
+    let divStyle = {};
+
+    if (this.state.rotated) {
+      divStyle["transform"] = "rotate(45deg)";
+    } else {
+      divStyle["transform"] = null;
+    }
+
+    // better way to do this for scaling? appending?
+    if (this.state.translated && this.state.scaled) {
+      divStyle["transform"] = "translate(0px,20px) scale(0.5)";
+    } else if (this.state.translated && !this.state.scaled) {
+      divStyle["transform"] = "translate(0px,20px)";
+    } else if (!this.state.translated && this.state.scaled) {
+      divStyle["transform"] = "scale(0.5)";
+    } else {
+      divStyle["transform"] = null;
+    }
 
     if (this.state.opacified) {
-      divStyle = {
-        opacity: 0.5
-      };
+      divStyle["opacity"] = 0.5;
+    } else {
+      divStyle["opacity"] = null;
     }
 
     if (imagePreviewUrl) {
@@ -98,6 +120,11 @@ class App extends Component {
     let $translateButton = <button className="translateButton"
       type="submit"
       onClick={ (e) => this._handleTranslate(e) }>Translate
+    </button>
+
+    let $scaleButton = <button className="scaleButton"
+      type="submit"
+      onClick={ (e) => this._handleScale(e) }>Scale
     </button>
 
     let $opacityButton = <button className="opacityButton"
@@ -123,20 +150,24 @@ class App extends Component {
 
         <section id="middle">
           <h2>Available Actions</h2>
-          { !this.state.actions.rotated && $rotateButton }
+          { !this.state.rotated && $rotateButton }
           <br/>
-          { !this.state.actions.translated && $translateButton }
+          { !this.state.translated && $translateButton }
           <br/>
-          { !this.state.actions.opacified && $opacityButton }
+          { !this.state.scaled && $scaleButton }
+          <br/>
+          { !this.state.opacified && $opacityButton }
         </section>
 
         <aside id="sidebar">
           <h2>Applied Actions</h2>
-          { this.state.actions.rotated && $rotateButton }
+          { this.state.rotated && $rotateButton }
           <br/>
-          { this.state.actions.translated && $translateButton }
+          { this.state.translated && $translateButton }
           <br/>
-          { this.state.actions.opacified && $opacityButton }
+          { this.state.scaled && $scaleButton }
+          <br/>
+          { this.state.opacified && $opacityButton }
         </aside>
 
         <footer>
