@@ -7,14 +7,17 @@ class App extends Component {
     super(props);
     this.state = {
       file: '',
-      imagePreviewUrl: ''
+      imagePreviewUrl: '',
+      rotated: false,
+      translated: false,
+      opacified: false
     };
   };
 
   _handleSubmit(e) {
     e.preventDefault();
     // TODO: do something with -> this.state.file
-    console.log('handle uploading-', this.state.file);
+    console.log('handle uploading', this.state.file);
   };
 
   _handleImageChange(e) {
@@ -39,15 +42,13 @@ class App extends Component {
     if (imagePreviewUrl) {
       $imagePreview = (<img className="imageDisplay" src={imagePreviewUrl} />);
     } else {
-      $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+      $imagePreview = (<div className="previewText"><h2>Upload an image</h2></div>);
     };
 
     return (
       <div id="pagewrap">
 
         <section id="content">
-          <h2>1st Content Area</h2>
-          <p>This page demonstrates a 3 column responsive layout, complete with responsive images and jquery slideshow.</p>
           <div className="previewComponent">
             <div className="imgPreview">
               {$imagePreview}
@@ -56,32 +57,30 @@ class App extends Component {
               <input className="fileInput"
                 type="file"
                 onChange={(e)=>this._handleImageChange(e)} />
-              <button className="submitButton"
-                type="submit"
-                onClick={(e)=>this._handleSubmit(e)}>Upload Image
-              </button>
             </form>
           </div>
         </section>
 
         <section id="middle">
-          <h2>2nd Content Area</h2>
+          <h2>Available Actions</h2>
           <button className="rotateButton"
             type="submit"
-            onClick={(e)=>this._handleSubmit(e)}>Rotate Image
+            onClick={(e)=>this._handleSubmit(e)}>Rotate
           </button>
-          <button className="rotateButton"
+          <br/>
+          <button className="translateButton"
             type="submit"
-            onClick={(e)=>this._handleSubmit(e)}>Rotate Image
+            onClick={(e)=>this._handleSubmit(e)}>Translate
           </button>
-          <button className="rotateButton"
+          <br/>
+          <button className="opacityButton"
             type="submit"
-            onClick={(e)=>this._handleSubmit(e)}>Rotate Image
+            onClick={(e)=>this._handleSubmit(e)}>Opacity
           </button>
         </section>
 
         <aside id="sidebar">
-          <h2>3rd Content Area</h2>
+          <h2>Applied Actions</h2>
           <p>Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
           <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
           <p>Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>

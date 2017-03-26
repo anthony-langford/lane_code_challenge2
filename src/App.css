@@ -5,21 +5,15 @@ body {
   color: #666;
 }
 
-/*.fileInput {
-  border-bottom: 4px solid lightgray;
-  border-right: 4px solid lightgray;
+.fileInput {
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
   border-top: 1px solid black;
   border-left: 1px solid black;
   padding: 10px;
-  margin: 15px 0px 0px 30px;
   outline: none;
-}
-
-.imgPreview {
-  text-align: center;
-  padding-top: 10%;
-  height: 200px;
-  width: 500px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
 }
 
 .imageDisplay {
@@ -28,21 +22,9 @@ body {
 
 .previewText {
   width: 100%;
-  margin-top: 20px;
 }
 
-.submitButton {
-  padding: 12px;
-  margin-left: 30px;
-  background: white;
-  border: 4px solid lightgray;
-  border-radius: 15px;
-  font-weight: 700;
-  font-size: 10pt;
-  outline: none;
-}
-
-.rotateButton {
+.rotateButton, .translateButton, .opacityButton {
   position: relative;
   padding: 12px;
   background: white;
@@ -56,7 +38,7 @@ body {
 .centerText {
   text-align: center;
   width: 500px;
-}*/
+}
 
 /* STRUCTURE */
 
@@ -67,20 +49,27 @@ body {
 }
 
 #content {
-  width: 290px;
+  width: 350px;
+  height: 400px;
   float: left;
   padding: 5px 15px;
 }
 
+.previewComponent {
+  height: 400px;
+}
+
 #middle {
-  width: 294px; /* Account for margins + border values */
+  width: 264px; /* Account for margins + border values */
+  height: 400px;
   float: left;
   padding: 5px 15px;
   margin: 0px 5px 5px 5px;
 }
 
 #sidebar {
-  width: 270px;
+  width: 240px;
+  height: 400px;
   padding: 5px 15px;
   float: left;
 }
@@ -168,4 +157,9 @@ MEDIA QUERIES
 
 #pagewrap, #content, #middle, #sidebar {
   border: solid 1px #ccc;
+}
+
+.rotateButton, .translateButton, .opacityButton {
+  display: block;
+  clear: both;
 }
