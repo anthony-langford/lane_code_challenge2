@@ -66,27 +66,27 @@ class App extends Component {
   };
 
   render() {
-    let {imagePreviewUrl} = this.state;
+    let { imagePreviewUrl } = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl) {
-      $imagePreview = (<img className="imageDisplay" src={imagePreviewUrl} />);
+      $imagePreview = (<img className="imageDisplay" src={ imagePreviewUrl } style={ imgStyle } />);
     } else {
       $imagePreview = (<div className="previewText"><h2>Upload an image</h2></div>);
     };
 
     let $rotateButton = <button className="rotateButton"
       type="submit"
-      onClick={(e)=>this._handleRotate(e)}>Rotate
+      onClick={ (e) => this._handleRotate(e) }>Rotate
     </button>
 
     let $translateButton = <button className="translateButton"
       type="submit"
-      onClick={(e)=>this._handleTranslate(e)}>Translate
+      onClick={ (e) => this._handleTranslate(e) }>Translate
     </button>
 
     let $opacityButton = <button className="opacityButton"
       type="submit"
-      onClick={(e)=>this._handleOpacity(e)}>Opacity
+      onClick={ (e) => this._handleOpacity(e) }>Opacity
     </button>
 
     return (
@@ -95,27 +95,32 @@ class App extends Component {
         <section id="content">
           <div className="previewComponent">
             <div className="imgPreview">
-              {$imagePreview}
+              { $imagePreview }
             </div>
-            <form onSubmit={(e)=>this._handleSubmit(e)}>
+            <form onSubmit={ (e) => this._handleSubmit(e) }>
               <input className="fileInput"
                 type="file"
-                onChange={(e)=>this._handleImageChange(e)} />
+                onChange={ (e) => this._handleImageChange(e) } />
             </form>
           </div>
         </section>
 
         <section id="middle">
           <h2>Available Actions</h2>
-          {$rotateButton}
+          { !this.state.rotated && $rotateButton }
           <br/>
-          {$translateButton}
+          { !this.state.translated && $translateButton }
           <br/>
-          {$opacityButton}
+          { !this.state.opacified && $opacityButton }
         </section>
 
         <aside id="sidebar">
           <h2>Applied Actions</h2>
+          { this.state.rotated && $rotateButton }
+          <br/>
+          { this.state.translated && $translateButton }
+          <br/>
+          { this.state.opacified && $opacityButton }
         </aside>
 
         <footer>
