@@ -8,9 +8,11 @@ class App extends Component {
     this.state = {
       file: '',
       imagePreviewUrl: '',
-      rotated: false,
-      translated: false,
-      opacified: false
+      actions: {
+        rotated: false,
+        translated: false,
+        opacified: false
+      }
     };
   };
 
@@ -38,38 +40,52 @@ class App extends Component {
   _handleRotate(e) {
     e.preventDefault();
     console.log('handle rotate');
-    if (this.state.rotated) {
-      this.setState({ rotated: false });
+    if (this.state.actions.rotated) {
+      this.state.actions.rotated = false;
+      this.setState({ actions: this.state.actions });
     } else {
-      this.setState({ rotated: true });
+      this.state.actions.rotated = true;
+      this.setState({ actions: this.state.actions });
     }
   };
 
   _handleTranslate(e) {
     e.preventDefault();
     console.log('handle translate');
-    if (this.state.translated) {
-      this.setState({ translated: false });
+    if (this.state.actions.translated) {
+      this.state.actions.translated = false;
+      this.setState({ actions: this.state.actions });
     } else {
-      this.setState({ translated: true });
+      this.state.actions.translated = true;
+      this.setState({ actions: this.state.actions });
     }
   };
 
   _handleOpacity(e) {
     e.preventDefault();
     console.log('handle opacity');
-    if (this.state.opacified) {
-      this.setState({ opacified: false });
+    if (this.state.actions.opacified) {
+      this.state.actions.opacified = false;
+      this.setState({ actions: this.state.actions });
     } else {
-      this.setState({ opacified: true });
+      this.state.actions.opacified = true;
+      this.setState({ actions: this.state.actions });
     }
   };
 
   render() {
     let { imagePreviewUrl } = this.state;
     let $imagePreview = null;
+    let divStyle = null;
+
+    if (this.state.opacified) {
+      divStyle = {
+        opacity: 0.5
+      };
+    }
+
     if (imagePreviewUrl) {
-      $imagePreview = (<img className="imageDisplay" src={ imagePreviewUrl } style={ imgStyle } />);
+      $imagePreview = (<img className="imageDisplay" src={ imagePreviewUrl } style={ divStyle } />);
     } else {
       $imagePreview = (<div className="previewText"><h2>Upload an image</h2></div>);
     };
@@ -107,20 +123,20 @@ class App extends Component {
 
         <section id="middle">
           <h2>Available Actions</h2>
-          { !this.state.rotated && $rotateButton }
+          { !this.state.actions.rotated && $rotateButton }
           <br/>
-          { !this.state.translated && $translateButton }
+          { !this.state.actions.translated && $translateButton }
           <br/>
-          { !this.state.opacified && $opacityButton }
+          { !this.state.actions.opacified && $opacityButton }
         </section>
 
         <aside id="sidebar">
           <h2>Applied Actions</h2>
-          { this.state.rotated && $rotateButton }
+          { this.state.actions.rotated && $rotateButton }
           <br/>
-          { this.state.translated && $translateButton }
+          { this.state.actions.translated && $translateButton }
           <br/>
-          { this.state.opacified && $opacityButton }
+          { this.state.actions.opacified && $opacityButton }
         </aside>
 
         <footer>
