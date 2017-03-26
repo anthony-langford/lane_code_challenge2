@@ -1,18 +1,11 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
 body {
-  margin: 0;
-  padding: 0;
   font-family: 'Open Sans', sans-serif;
+  color: #666;
 }
 
-.App {
-  text-align: center;
-}
-
-h3 {
-  margin-left: 15px;
-}
-
-.fileInput {
+/*.fileInput {
   border-bottom: 4px solid lightgray;
   border-right: 4px solid lightgray;
   border-top: 1px solid black;
@@ -63,4 +56,116 @@ h3 {
 .centerText {
   text-align: center;
   width: 500px;
+}*/
+
+/* STRUCTURE */
+
+#pagewrap {
+  padding: 5px;
+  width: 960px;
+  margin: 20px auto;
+}
+
+#content {
+  width: 290px;
+  float: left;
+  padding: 5px 15px;
+}
+
+#middle {
+  width: 294px; /* Account for margins + border values */
+  float: left;
+  padding: 5px 15px;
+  margin: 0px 5px 5px 5px;
+}
+
+#sidebar {
+  width: 270px;
+  padding: 5px 15px;
+  float: left;
+}
+
+footer {
+  clear: both;
+}
+
+/************************************************************************************
+MEDIA QUERIES
+*************************************************************************************/
+/* for 980px or less */
+@media screen and (max-width: 980px) {
+
+  #pagewrap {
+    width: 94%;
+  }
+
+  #content {
+    width: 41%;
+    padding: 1% 4%;
+  }
+
+  #middle {
+    width: 41%;
+    padding: 1% 4%;
+    margin: 0px 0px 5px 5px;
+    float: right;
+  }
+
+  #sidebar {
+    clear: both;
+    padding: 1% 4%;
+    width: auto;
+    float: none;
+  }
+
+  footer {
+    padding: 1% 4%;
+  }
+}
+
+/* for 700px or less */
+@media screen and (max-width: 600px) {
+
+  #content {
+    width: auto;
+    float: none;
+  }
+
+  #middle {
+    width: auto;
+    float: none;
+    margin-left: 0px;
+  }
+
+  #sidebar {
+    width: auto;
+    float: none;
+  }
+
+}
+
+/* for 480px or less */
+@media screen and (max-width: 480px) {
+
+  h1 {
+    font-size: 2em;
+  }
+
+}
+
+
+#content {
+  background: #f8f8f8;
+}
+
+#sidebar {
+  background: #f0efef;
+}
+
+#content, #middle, #sidebar {
+  margin-bottom: 5px;
+}
+
+#pagewrap, #content, #middle, #sidebar {
+  border: solid 1px #ccc;
 }
