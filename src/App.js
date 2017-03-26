@@ -16,7 +16,6 @@ class App extends Component {
 
   _handleSubmit(e) {
     e.preventDefault();
-    // TODO: do something with -> this.state.file
     console.log('handle uploading', this.state.file);
   };
 
@@ -36,6 +35,36 @@ class App extends Component {
     reader.readAsDataURL(file);
   };
 
+  _handleRotate(e) {
+    e.preventDefault();
+    console.log('handle rotate');
+    if (this.state.rotated) {
+      this.setState({ rotated: false });
+    } else {
+      this.setState({ rotated: true });
+    }
+  };
+
+  _handleTranslate(e) {
+    e.preventDefault();
+    console.log('handle translate');
+    if (this.state.translated) {
+      this.setState({ translated: false });
+    } else {
+      this.setState({ translated: true });
+    }
+  };
+
+  _handleOpacity(e) {
+    e.preventDefault();
+    console.log('handle opacity');
+    if (this.state.opacified) {
+      this.setState({ opacified: false });
+    } else {
+      this.setState({ opacified: true });
+    }
+  };
+
   render() {
     let {imagePreviewUrl} = this.state;
     let $imagePreview = null;
@@ -44,6 +73,21 @@ class App extends Component {
     } else {
       $imagePreview = (<div className="previewText"><h2>Upload an image</h2></div>);
     };
+
+    let $rotateButton = <button className="rotateButton"
+      type="submit"
+      onClick={(e)=>this._handleRotate(e)}>Rotate
+    </button>
+
+    let $translateButton = <button className="translateButton"
+      type="submit"
+      onClick={(e)=>this._handleTranslate(e)}>Translate
+    </button>
+
+    let $opacityButton = <button className="opacityButton"
+      type="submit"
+      onClick={(e)=>this._handleOpacity(e)}>Opacity
+    </button>
 
     return (
       <div id="pagewrap">
@@ -63,27 +107,15 @@ class App extends Component {
 
         <section id="middle">
           <h2>Available Actions</h2>
-          <button className="rotateButton"
-            type="submit"
-            onClick={(e)=>this._handleSubmit(e)}>Rotate
-          </button>
+          {$rotateButton}
           <br/>
-          <button className="translateButton"
-            type="submit"
-            onClick={(e)=>this._handleSubmit(e)}>Translate
-          </button>
+          {$translateButton}
           <br/>
-          <button className="opacityButton"
-            type="submit"
-            onClick={(e)=>this._handleSubmit(e)}>Opacity
-          </button>
+          {$opacityButton}
         </section>
 
         <aside id="sidebar">
           <h2>Applied Actions</h2>
-          <p>Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-          <p>Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
         </aside>
 
         <footer>
