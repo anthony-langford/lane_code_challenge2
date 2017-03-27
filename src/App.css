@@ -20,13 +20,6 @@ body {
   left: 5%;
 }
 
-.imageContainer {
-  width: 95%;
-  height: 90%;
-  position: absolute;
-  display: table;
-}
-
 .imageDisplay {
   width: inherit;
   max-width: 90%;
@@ -35,7 +28,7 @@ body {
   margin: 0 auto;
   display: table-cell;
   vertical-align: middle;
-  top: 50%;
+  top: 100px;
 }
 
 .previewText {
@@ -75,7 +68,10 @@ body {
 }
 
 .previewComponent {
-  height: 400px;
+  width: 95%;
+  height: 100%;
+  position: absolute;
+  display: table;
 }
 
 #middle {

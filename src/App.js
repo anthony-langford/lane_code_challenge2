@@ -96,11 +96,7 @@ class App extends Component {
     let transformations = [];
 
     if (imagePreviewUrl) {
-      $imagePreview = (
-        <div className="imageContainer">
-          <img className="imageDisplay" src={ imagePreviewUrl } alt="" style={ imgStyle } />
-        </div>
-      );
+      $imagePreview = (<img className="imageDisplay" src={ imagePreviewUrl } alt="" style={ imgStyle } />);
     } else {
       $imagePreview = (<div className="previewText"><h2>Upload an image</h2></div>);
     };
