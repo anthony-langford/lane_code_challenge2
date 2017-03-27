@@ -8,4 +8,7 @@ A simple single-page application built on React that allows users to upload and 
 4. Start the app by running `npm start`
 
 ## Dependencies
-
+* express
+* react
+* react-dom
+* react-dropzone
