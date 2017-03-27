@@ -1,5 +1,5 @@
 # Img-React
-A simple single-page application built on React that allows users to upload and modify image.
+A simple single-page application built on React that allows users to upload and modify images.
 
 ## Setup
 1. Clone repo with `git clone git@github.com:iamtonybologna/lane_code_challenge2.git`
