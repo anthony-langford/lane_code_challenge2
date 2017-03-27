@@ -22,13 +22,13 @@ body {
 
 .imageDisplay {
   width: inherit;
-  max-width: 90%;
-  max-height: 350px;
+  max-width: 85%;
+  max-height: 280px;
   position: relative;
   margin: 0 auto;
   display: table-cell;
   vertical-align: middle;
-  top: 100px;
+  top: 120px;
 }
 
 .previewText {
