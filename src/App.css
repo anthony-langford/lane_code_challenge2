@@ -20,12 +20,22 @@ body {
   left: 5%;
 }
 
+.imageContainer {
+  width: 95%;
+  height: 90%;
+  position: absolute;
+  display: table;
+}
+
 .imageDisplay {
-  width: 80%;
+  width: inherit;
+  max-width: 90%;
   max-height: 350px;
-  margin-top: 15%;
-  margin-left: 19%;
   position: relative;
+  margin: 0 auto;
+  display: table-cell;
+  vertical-align: middle;
+  top: 50%;
 }
 
 .previewText {
